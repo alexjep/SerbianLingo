@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <title>Урок сербского языка</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="min-h-screen bg-gray-50 flex items-center justify-center">
+    <div
+      id="lesson-container"
+      class="w-full max-w-md mx-auto p-6 rounded-2xl bg-white shadow-xl flex flex-col items-center"
+    >
+      <!-- Кнопка закрытия -->
+      <div class="w-full mb-2 flex items-center justify-start">
+        <button
+          id="close-lesson"
+          type="button"
+          class="w-10 h-10 -ml-2 flex items-center justify-center text-2xl text-gray-400 hover:text-gray-600 transition-colors"
+          aria-label="Закрыть урок"
+        >
+          ✕
+        </button>
+      </div>
+
+      <!-- Прогресс бар (глобальный) -->
+      <div class="w-full mb-6">
+        <div class="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+          <div
+            id="progressBar"
+            class="bg-green-500 h-2 transition-all duration-300"
+            style="width:0%"
+          ></div>
+        </div>
+        <div
+          id="progressText"
+          class="text-sm text-gray-500 mt-1 text-right select-none"
+        >
+          0%
+        </div>
+      </div>
+
+      <!-- Сербское слово / задание -->
+      <div
+        id="word"
+        class="text-3xl sm:text-4xl font-semibold mb-10 mt-2 text-gray-900 text-center select-none"
+      ></div>
+
+      <!-- Область заданий -->
+      <div id="options" class="grid grid-cols-1 gap-5 w-full"></div>
+
+      <!-- Контейнер для основной кнопки действия с фиксированной высотой -->
+      <div
+        id="nextBtn-container"
+        class="mt-10 w-full min-h-[60px] flex items-start"
+      >
+        <button
+          id="nextBtn"
+          class="w-full py-4 text-lg rounded-xl font-semibold shadow-lg transition focus:outline-none"
+        >
+          Дальше
+        </button>
+      </div>
+    </div>
+
+    <!-- Экран поздравления -->
+    <div
+      id="congrats"
+      class="hidden w-full max-w-md mx-auto p-8 rounded-2xl bg-white shadow-xl flex flex-col items-center justify-center"
+    >
+      <div class="text-4xl font-bold text-green-600 mb-4">Поздравляем!</div>
+      <div class="text-xl text-gray-800 mb-6 text-center">
+        Вы успешно прошли урок.
+      </div>
+      <button
+        id="backToMapBtn"
+        class="mb-4 w-full py-3 text-lg rounded-xl bg-green-500 text-white font-semibold shadow-lg transition hover:bg-green-600 focus:outline-none"
+      >
+        Вернуться на карту
+      </button>
+      <button
+        id="restartBtn"
+        class="px-6 py-3 rounded-lg bg-gray-100 text-gray-800 font-semibold hover:bg-gray-200 transition"
+      >
+        Пройти ещё раз
+      </button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
