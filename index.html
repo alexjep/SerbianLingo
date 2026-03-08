@@ -1,229 +1,67 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Сербский язык — уровни</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Tailwind CSS CDN -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Модули - Сербский язык</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <style>
-      body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter",
-          "Segoe UI", sans-serif;
-      }
-    </style>
-  </head>
-  <body
-    class="min-h-screen bg-gradient-to-b from-sky-100 via-sky-50 to-emerald-50 flex flex-col"
-  >
-    <!-- Header -->
-    <header
-      class="w-full border-b border-sky-200 bg-sky-50/80 backdrop-blur-sm"
-    >
-      <div
-        class="max-w-md mx-auto px-5 py-4 flex items-center justify-between gap-3"
-      >
-        <div class="flex items-center gap-2">
-          <div
-            class="flex items-center justify-center w-9 h-9 rounded-2xl bg-white shadow-md shadow-sky-200 text-xl"
-          >
-            🇷🇸
-          </div>
-          <div class="flex flex-col">
-            <span class="text-sm uppercase tracking-wide text-sky-500 font-semibold">
-              Сербский язык
-            </span>
-            <span class="text-xs text-sky-800/80">
-              Мини-уроки в стиле Duolingo
-            </span>
-          </div>
+</head>
+<body class="bg-slate-100 min-h-screen font-sans pb-10">
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="max-w-md mx-auto p-4 flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold text-gray-800 tracking-tight">🇷🇸 Сербский язык</h1>
+            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-500 font-bold">A1</div>
         </div>
-      </div>
     </header>
 
-    <!-- Main content -->
-    <main class="flex-1">
-      <div
-        class="max-w-md mx-auto h-full px-5 py-6 flex flex-col overflow-y-auto"
-      >
-        <!-- Заголовок страницы -->
-        <div class="mb-6">
-          <h1 class="text-2xl font-extrabold text-sky-900 drop-shadow-sm">
-            Выберите уровень
-          </h1>
-          <p class="mt-1 text-sm text-sky-700/80">
-            Начните с основ и двигайтесь вперёд шаг за шагом.
-          </p>
-        </div>
+    <main class="max-w-md mx-auto mt-8 px-4 flex flex-col gap-6">
 
-        <!-- Лестница уровней -->
-        <div class="relative flex flex-col gap-10 pb-10">
-          <!-- Уровень 1 — центр -->
-          <div class="flex justify-center">
-            <a
-              href="lesson.html?level=1"
-              class="group flex flex-col items-center gap-2"
-            >
-              <div
-                class="w-24 h-24 rounded-full bg-gradient-to-b from-emerald-400 to-emerald-500 shadow-[0_12px_0_rgba(16,185,129,0.65)] flex items-center justify-center border-4 border-white hover:-translate-y-1 transition-transform"
-              >
-                <span class="text-3xl select-none">1️⃣</span>
-              </div>
-              <div class="text-center">
-                <div class="text-sm font-bold text-emerald-700">
-                  Основы
-                </div>
-                <div class="text-[11px] text-emerald-700/80">
-                  Доступен • нажмите, чтобы начать
-                </div>
-              </div>
-            </a>
-          </div>
+        <a href="levels.html?module=1" class="block bg-white rounded-3xl p-6 shadow-[0_4px_0_rgb(226,232,240)] active:translate-y-1 active:shadow-none transition-all cursor-pointer border-2 border-transparent hover:border-blue-100">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-gray-800">Модуль 1</h2>
+                <span class="text-3xl">👋</span>
+            </div>
+            <h3 class="text-lg font-semibold text-blue-500 mb-2">Добродошли! (Основы)</h3>
+            <p class="text-gray-500 text-sm">Вывески, базовая вежливость и фразы-выручалочки.</p>
+        </a>
 
-          <!-- Уровень 2 — влево -->
-          <div class="flex justify-start">
-            <button
-              id="level-2"
-              type="button"
-              class="flex flex-col items-center gap-2 opacity-70 cursor-not-allowed"
-              aria-disabled="true"
-            >
-              <div
-                id="level-2-circle"
-                class="w-20 h-20 rounded-full bg-gradient-to-b from-gray-200 to-gray-300 shadow-[0_10px_0_rgba(148,163,184,0.7)] flex items-center justify-center border-4 border-white"
-              >
-                <span class="text-2xl select-none">🌶️</span>
-              </div>
-              <div class="text-center">
-                <div class="text-sm font-semibold text-slate-600">
-                  Уровень 2 • Храна
-                </div>
-                <div
-                  id="level-2-status"
-                  class="text-[11px] text-slate-500"
-                >
-                  Заблокировано
-                </div>
-              </div>
-            </button>
-          </div>
+        <a id="module-2" href="#" class="block bg-gray-100 rounded-3xl p-6 shadow-[0_4px_0_rgb(209,213,219)] opacity-75 cursor-not-allowed">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-gray-400">Модуль 2</h2>
+                <span class="text-3xl grayscale opacity-50">🏙️</span>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-400 mb-2">Городская среда</h3>
+            <p class="text-gray-400 text-sm">Ориентация в городе, транспорт и направления.</p>
+            <div class="mt-4 inline-block bg-gray-200 text-gray-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                Пройдите Модуль 1
+            </div>
+        </a>
 
-          <!-- Уровень 3 — вправо -->
-          <div class="flex justify-end">
-            <button
-              id="level-3"
-              type="button"
-              class="flex flex-col items-center gap-2 opacity-70 cursor-not-allowed"
-              aria-disabled="true"
-            >
-              <div
-                id="level-3-circle"
-                class="w-20 h-20 rounded-full bg-gradient-to-b from-gray-200 to-gray-300 shadow-[0_10px_0_rgba(148,163,184,0.7)] flex items-center justify-center border-4 border-white"
-              >
-                <span class="text-2xl select-none">🏙️</span>
-              </div>
-              <div class="text-center">
-                <div class="text-sm font-semibold text-slate-600">
-                  Уровень 3 • Град
-                </div>
-                <div
-                  id="level-3-status"
-                  class="text-[11px] text-slate-500"
-                >
-                  Заблокировано
-                </div>
-              </div>
-            </button>
-          </div>
-
-          <!-- Уровень 4 — центр -->
-          <div class="flex justify-center">
-            <button
-              type="button"
-              class="flex flex-col items-center gap-2 opacity-70 cursor-not-allowed"
-              aria-disabled="true"
-            >
-              <div
-                class="w-20 h-20 rounded-full bg-gradient-to-b from-gray-200 to-gray-300 shadow-[0_10px_0_rgba(148,163,184,0.7)] flex items-center justify-center border-4 border-white"
-              >
-                <span class="text-2xl select-none">💬</span>
-              </div>
-              <div class="text-center">
-                <div class="text-sm font-semibold text-slate-600">
-                  Уровень 4 • Диалози
-                </div>
-                <div class="text-[11px] text-slate-500">
-                  Заблокировано
-                </div>
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
     </main>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Разблокировка уровня 2 после прохождения урока 1
-        if (
-          typeof localStorage !== "undefined" &&
-          localStorage.getItem("lesson1_completed") === "true"
-        ) {
-          const level2 = document.getElementById("level-2");
-          const circle2 = document.getElementById("level-2-circle");
-          const status2 = document.getElementById("level-2-status");
+        // Логика разблокировки Модуля 2
+        // Проверяем, пройден ли последний (третий) урок первого модуля
+        if (localStorage.getItem('lesson3_completed') === 'true') {
+            const mod2 = document.getElementById('module-2');
 
-          if (level2 && circle2) {
-            level2.classList.remove("opacity-70", "cursor-not-allowed");
-            level2.setAttribute("aria-disabled", "false");
-            level2.classList.add("cursor-pointer");
+            // Меняем ссылку, чтобы она вела на карту уровней второго модуля
+            mod2.href = "levels.html?module=2";
 
-            circle2.className =
-              "w-24 h-24 rounded-full bg-gradient-to-b from-emerald-400 to-emerald-500 shadow-[0_12px_0_rgba(16,185,129,0.65)] flex items-center justify-center border-4 border-white hover:-translate-y-1 transition-transform";
+            // Убираем серые классы и добавляем активные
+            mod2.classList.remove('bg-gray-100', 'shadow-[0_4px_0_rgb(209,213,219)]', 'opacity-75', 'cursor-not-allowed');
+            mod2.classList.add('bg-white', 'shadow-[0_4px_0_rgb(226,232,240)]', 'active:translate-y-1', 'active:shadow-none', 'transition-all', 'cursor-pointer', 'border-2', 'border-transparent', 'hover:border-green-100');
 
-            if (status2) {
-              status2.textContent = "Открыт • нажмите, чтобы начать";
-              status2.classList.remove("text-slate-500");
-              status2.classList.add("text-emerald-700/80");
-            }
+            // Раскрашиваем тексты
+            mod2.querySelector('h2').classList.replace('text-gray-400', 'text-gray-800');
+            mod2.querySelector('h3').classList.replace('text-gray-400', 'text-green-500');
+            mod2.querySelector('p').classList.replace('text-gray-400', 'text-gray-500');
+            mod2.querySelector('span').classList.remove('grayscale', 'opacity-50');
 
-            level2.addEventListener("click", function () {
-              window.location.href = "lesson.html?level=2";
-            });
-          }
+            // Убираем плашку "Пройдите Модуль 1"
+            const badge = mod2.querySelector('div.mt-4');
+            if(badge) badge.remove();
         }
-
-        // Разблокировка уровня 3 после прохождения урока 2
-        if (
-          typeof localStorage !== "undefined" &&
-          localStorage.getItem("lesson2_completed") === "true"
-        ) {
-          const level3 = document.getElementById("level-3");
-          const circle3 = document.getElementById("level-3-circle");
-          const status3 = document.getElementById("level-3-status");
-
-          if (level3 && circle3) {
-            level3.classList.remove("opacity-70", "cursor-not-allowed");
-            level3.setAttribute("aria-disabled", "false");
-            level3.classList.add("cursor-pointer");
-
-            circle3.className =
-              "w-24 h-24 rounded-full bg-gradient-to-b from-emerald-400 to-emerald-500 shadow-[0_12px_0_rgba(16,185,129,0.65)] flex items-center justify-center border-4 border-white hover:-translate-y-1 transition-transform";
-
-            if (status3) {
-              status3.textContent = "Открыт • нажмите, чтобы начать";
-              status3.classList.remove("text-slate-500");
-              status3.classList.add("text-emerald-700/80");
-            }
-
-            level3.addEventListener("click", function () {
-              window.location.href = "lesson.html?level=3";
-            });
-          }
-        }
-      });
     </script>
-  </body>
+</body>
 </html>

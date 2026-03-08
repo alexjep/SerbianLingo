@@ -603,7 +603,7 @@ if (restartBtn) {
 
 if (backToMapBtn) {
   backToMapBtn.addEventListener("click", () => {
-    window.location.href = "index.html";
+    window.location.href = "levels.html";
   });
 }
 
@@ -613,7 +613,7 @@ if (closeLessonBtn) {
       "Вы уверены, что хотите прервать урок? Ваш прогресс не сохранится.",
     );
     if (isConfirmed) {
-      window.location.href = "index.html";
+      window.location.href = "levels.html";
     }
   });
 }

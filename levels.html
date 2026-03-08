@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Сербский язык — уровни</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter",
+          "Segoe UI", sans-serif;
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen bg-gradient-to-b from-sky-100 via-sky-50 to-emerald-50 flex flex-col"
+  >
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="max-w-md mx-auto p-4 flex items-center justify-between">
+            <a href="index.html" class="text-gray-400 hover:text-gray-600 transition-colors p-2 -ml-2 rounded-full hover:bg-gray-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+            </a>
+
+            <h1 class="text-xl font-extrabold text-gray-800 tracking-tight">🇷🇸 Сербский</h1>
+
+            <div class="w-7 h-7"></div>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="flex-1">
+      <div
+        class="max-w-md mx-auto h-full px-5 py-6 flex flex-col overflow-y-auto"
+      >
+        <!-- Заголовок страницы -->
+        <div class="mb-6">
+          <h1 class="text-2xl font-extrabold text-sky-900 drop-shadow-sm">
+            Выберите уровень
+          </h1>
+          <p class="mt-1 text-sm text-sky-700/80">
+            Начните с основ и двигайтесь вперёд шаг за шагом.
+          </p>
+        </div>
+
+        <!-- Лестница уровней -->
+        <div class="relative flex flex-col gap-10 pb-10">
+          <!-- Уровень 1 — центр -->
+          <div class="flex justify-center">
+            <a
+              href="lesson.html?level=1"
+              class="group flex flex-col items-center gap-2"
+            >
+              <div
+                class="w-24 h-24 rounded-full bg-gradient-to-b from-emerald-400 to-emerald-500 shadow-[0_12px_0_rgba(16,185,129,0.65)] flex items-center justify-center border-4 border-white hover:-translate-y-1 transition-transform"
+              >
+                <span class="text-3xl select-none">1️⃣</span>
+              </div>
+              <div class="text-center">
+                <div class="text-sm font-bold text-emerald-700">
+                  Основы
+                </div>
+                <div class="text-[11px] text-emerald-700/80">
+                  Доступен • нажмите, чтобы начать
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Уровень 2 — влево -->
+          <div class="flex justify-start">
+            <button
+              id="level-2"
+              type="button"
+              class="flex flex-col items-center gap-2 opacity-70 cursor-not-allowed"
+              aria-disabled="true"
+            >
+              <div
+                id="level-2-circle"
+                class="w-20 h-20 rounded-full bg-gradient-to-b from-gray-200 to-gray-300 shadow-[0_10px_0_rgba(148,163,184,0.7)] flex items-center justify-center border-4 border-white"
+              >
+                <span class="text-2xl select-none">🌶️</span>
+              </div>
+              <div class="text-center">
+                <div class="text-sm font-semibold text-slate-600">
+                  Уровень 2 • Храна
+                </div>
+                <div
+                  id="level-2-status"
+                  class="text-[11px] text-slate-500"
+                >
+                  Заблокировано
+                </div>
+              </div>
+            </button>
+          </div>
+
+          <!-- Уровень 3 — вправо -->
+          <div class="flex justify-end">
+            <button
+              id="level-3"
+              type="button"
+              class="flex flex-col items-center gap-2 opacity-70 cursor-not-allowed"
+              aria-disabled="true"
+            >
+              <div
+                id="level-3-circle"
+                class="w-20 h-20 rounded-full bg-gradient-to-b from-gray-200 to-gray-300 shadow-[0_10px_0_rgba(148,163,184,0.7)] flex items-center justify-center border-4 border-white"
+              >
+                <span class="text-2xl select-none">🏙️</span>
+              </div>
+              <div class="text-center">
+                <div class="text-sm font-semibold text-slate-600">
+                  Уровень 3 • Град
+                </div>
+                <div
+                  id="level-3-status"
+                  class="text-[11px] text-slate-500"
+                >
+                  Заблокировано
+                </div>
+              </div>
+            </button>
+          </div>
+
+          <!-- Уровень 4 — центр -->
+          <div class="flex justify-center">
+            <button
+              type="button"
+              class="flex flex-col items-center gap-2 opacity-70 cursor-not-allowed"
+              aria-disabled="true"
+            >
+              <div
+                class="w-20 h-20 rounded-full bg-gradient-to-b from-gray-200 to-gray-300 shadow-[0_10px_0_rgba(148,163,184,0.7)] flex items-center justify-center border-4 border-white"
+              >
+                <span class="text-2xl select-none">💬</span>
+              </div>
+              <div class="text-center">
+                <div class="text-sm font-semibold text-slate-600">
+                  Уровень 4 • Диалози
+                </div>
+                <div class="text-[11px] text-slate-500">
+                  Заблокировано
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Разблокировка уровня 2 после прохождения урока 1
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("lesson1_completed") === "true"
+        ) {
+          const level2 = document.getElementById("level-2");
+          const circle2 = document.getElementById("level-2-circle");
+          const status2 = document.getElementById("level-2-status");
+
+          if (level2 && circle2) {
+            level2.classList.remove("opacity-70", "cursor-not-allowed");
+            level2.setAttribute("aria-disabled", "false");
+            level2.classList.add("cursor-pointer");
+
+            circle2.className =
+              "w-24 h-24 rounded-full bg-gradient-to-b from-emerald-400 to-emerald-500 shadow-[0_12px_0_rgba(16,185,129,0.65)] flex items-center justify-center border-4 border-white hover:-translate-y-1 transition-transform";
+
+            if (status2) {
+              status2.textContent = "Открыт • нажмите, чтобы начать";
+              status2.classList.remove("text-slate-500");
+              status2.classList.add("text-emerald-700/80");
+            }
+
+            level2.addEventListener("click", function () {
+              window.location.href = "lesson.html?level=2";
+            });
+          }
+        }
+
+        // Разблокировка уровня 3 после прохождения урока 2
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("lesson2_completed") === "true"
+        ) {
+          const level3 = document.getElementById("level-3");
+          const circle3 = document.getElementById("level-3-circle");
+          const status3 = document.getElementById("level-3-status");
+
+          if (level3 && circle3) {
+            level3.classList.remove("opacity-70", "cursor-not-allowed");
+            level3.setAttribute("aria-disabled", "false");
+            level3.classList.add("cursor-pointer");
+
+            circle3.className =
+              "w-24 h-24 rounded-full bg-gradient-to-b from-emerald-400 to-emerald-500 shadow-[0_12px_0_rgba(16,185,129,0.65)] flex items-center justify-center border-4 border-white hover:-translate-y-1 transition-transform";
+
+            if (status3) {
+              status3.textContent = "Открыт • нажмите, чтобы начать";
+              status3.classList.remove("text-slate-500");
+              status3.classList.add("text-emerald-700/80");
+            }
+
+            level3.addEventListener("click", function () {
+              window.location.href = "lesson.html?level=3";
+            });
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
