@@ -1,10 +1,54 @@
 // Данные уроков: только match и sentence
 const lessonsData = {
   1: {
-    theoryTitle: "Урок 1: Вывески и слова",
+    theoryTitle: "Урок 1: Азбука и слова",
     theoryText:
-      "В сербском языке используется и кириллица, и латиница. Главное правило: как пишется, так и читается! Попробуй угадать эти слова, они очень похожи на русские.",
+      "В сербском языке есть правило: «Пиши как говоришь, читай как написано». Почти все буквы нам знакомы, но есть 6 особенных. Давай с ними познакомимся!",
     questions: [
+      {
+        type: "alphabet",
+        title: "Особые буквы",
+        subtitle: "Нажми на каждую букву, чтобы послушать её и увидеть пример.",
+        letters: [
+          {
+            char: "Ђ ђ",
+            sound: "ђе",
+            word: "Ђоковић (Джокович)",
+            wordSound: "Ђоковић",
+          },
+          {
+            char: "Ј ј",
+            sound: "је",
+            word: "Јабука (Яблоко)",
+            wordSound: "Јабука",
+          },
+          {
+            char: "Љ љ",
+            sound: "ље",
+            word: "Љубав (Любовь)",
+            wordSound: "Љубав",
+          },
+          {
+            char: "Њ њ",
+            sound: "ње",
+            word: "Његош (Негош)",
+            wordSound: "Његош",
+          },
+          {
+            char: "Ћ ћ",
+            sound: "ће",
+            word: "Ћао (Привет/Пока)",
+            wordSound: "Ћао",
+          },
+          {
+            char: "Џ џ",
+            sound: "џе",
+            word: "Џемпер (Свитер)",
+            wordSound: "Џемпер",
+          },
+        ],
+      },
+      // Дальше идут наши привычные задания
       {
         type: "match",
         pairs: {
@@ -23,27 +67,7 @@ const lessonsData = {
           Маркет: "Магазин",
         },
       },
-      {
-        type: "match",
-        pairs: {
-          Тоалет: "Туалет",
-          Аутобус: "Автобус",
-          Пица: "Пицца",
-          Музеј: "Музей",
-        },
-      },
-      {
-        type: "sentence",
-        question: "Такси, пожалуйста",
-        correctAnswer: "Такси молим",
-        words: ["Такси", "молим", "кафа"],
-      },
-      {
-        type: "sentence",
-        question: "Аптека и банк",
-        correctAnswer: "Апотека и банка",
-        words: ["Апотека", "и", "банка", "пица"],
-      },
+      // ... можешь оставить остальные мэтчинги и предложения из прошлого варианта
     ],
   },
   2: {
@@ -196,6 +220,104 @@ const theoryModal = document.getElementById("theory-modal");
 const theoryModalText = document.getElementById("theory-modal-text");
 const closeModalBtn = document.getElementById("close-modal-btn");
 
+// Функция транслитерации (только для робота-диктора)
+function cyrillicToLatin(text) {
+  const mapping = {
+    а: "a",
+    б: "b",
+    в: "v",
+    г: "g",
+    д: "d",
+    ђ: "đ",
+    е: "e",
+    ж: "ž",
+    з: "z",
+    и: "i",
+    ј: "j",
+    к: "k",
+    л: "l",
+    љ: "lj",
+    м: "m",
+    н: "n",
+    њ: "nj",
+    о: "o",
+    п: "p",
+    р: "r",
+    с: "s",
+    т: "t",
+    ћ: "ć",
+    у: "u",
+    ф: "f",
+    х: "h",
+    ц: "c",
+    ч: "č",
+    џ: "dž",
+    ш: "š",
+    А: "A",
+    Б: "B",
+    В: "V",
+    Г: "G",
+    Д: "D",
+    Ђ: "Đ",
+    Е: "E",
+    Ж: "Ž",
+    З: "Z",
+    И: "I",
+    Ј: "J",
+    К: "K",
+    Л: "L",
+    Љ: "Lj",
+    М: "M",
+    Н: "N",
+    Њ: "Nj",
+    О: "O",
+    П: "P",
+    Р: "R",
+    С: "S",
+    Т: "T",
+    Ћ: "Ć",
+    У: "U",
+    Ф: "F",
+    Х: "H",
+    Ц: "C",
+    Ч: "Č",
+    Џ: "Dž",
+    Ш: "Š",
+  };
+  return text
+    .split("")
+    .map((char) => mapping[char] || char)
+    .join("");
+}
+
+// Умная функция озвучки
+function speakSerbian(text) {
+  window.speechSynthesis.cancel();
+
+  // Магия: переводим текст в латиницу перед озвучкой
+  const latinText = cyrillicToLatin(text);
+  const utterance = new SpeechSynthesisUtterance(latinText);
+
+  // Принудительно просим хорватский или сербский (латинский)
+  utterance.lang = "hr-HR";
+
+  const voices = window.speechSynthesis.getVoices();
+  // Ищем балканские голоса
+  const balkanVoice = voices.find(
+    (voice) =>
+      voice.lang.includes("hr") ||
+      voice.lang.includes("sr") ||
+      voice.lang.includes("bs"),
+  );
+
+  if (balkanVoice) {
+    utterance.voice = balkanVoice;
+  }
+
+  utterance.rate = 0.9; // Чуть замедляем для учеников
+  window.speechSynthesis.speak(utterance);
+}
+
 function setNextButtonDisabled(label) {
   nextBtn.disabled = true;
   nextBtn.textContent = label;
@@ -243,6 +365,10 @@ function showQuestion() {
     // Для match по умолчанию показываем неактивную кнопку "Дальше"
     setNextButtonDisabled("Дальше");
     renderMatchQuestion(question);
+  } else if (currentQuestionType === "alphabet") {
+    // ДОБАВЛЯЕМ НАШ НОВЫЙ ТИП: по умолчанию кнопка "Дальше" неактивна
+    setNextButtonDisabled("Дальше");
+    renderAlphabetQuestion(question);
   } else {
     console.warn("Неизвестный тип задания:", currentQuestionType, question);
   }
@@ -338,7 +464,17 @@ function renderMatchQuestion(question) {
     btn.setAttribute("data-role", "match-tile");
     btn.setAttribute("data-side", "right");
 
-    btn.addEventListener("click", () => handleMatchTileClick(btn, pairs));
+    // Наш обновленный клик с озвучкой
+    btn.addEventListener("click", () => {
+      // 1. Озвучиваем слово в любом случае!
+      speakSerbian(btn.textContent);
+
+      // 2. Если карточка уже разгадана (зеленая), прерываем игровую логику,
+      // чтобы она не пыталась снова искать себе пару
+      if (btn.dataset.matched === "true") return;
+
+      handleMatchTileClick(btn, pairs);
+    });
     rightCol.appendChild(btn);
   });
 
@@ -347,6 +483,83 @@ function renderMatchQuestion(question) {
 
   // Кнопка "Дальше" уже показана, но пока неактивна.
   setNextButtonDisabled("Дальше");
+}
+
+function renderAlphabetQuestion(question) {
+  // 1. Используем твои глобальные переменные!
+  optionsDiv.innerHTML = "";
+  optionsDiv.className = "flex justify-center w-full"; // Сбрасываем стили сетки от мэтчинга
+
+  // 2. Используем wordDiv для заголовка
+  wordDiv.textContent = question.title;
+
+  // Контейнер для нашего интерактива
+  const alphabetContainer = document.createElement("div");
+  alphabetContainer.className = "flex flex-col items-center gap-6 w-full";
+
+  // Подзаголовок
+  const subtitle = document.createElement("p");
+  subtitle.className = "text-gray-500 text-center mb-4";
+  subtitle.textContent = question.subtitle;
+  alphabetContainer.appendChild(subtitle);
+
+  // ... дальше оставляй всё как было (начиная со строк про grid и wordDisplay)
+  const grid = document.createElement("div");
+  grid.className = "grid grid-cols-3 gap-4 w-full max-w-sm";
+
+  // Блок для показа примера слова (изначально пустой)
+  const wordDisplay = document.createElement("div");
+  wordDisplay.className =
+    "h-16 flex items-center justify-center text-xl font-bold text-blue-600 w-full bg-blue-50 rounded-xl transition-all";
+  wordDisplay.textContent = "👆 Нажми на букву";
+
+  let clickedLetters = 0; // Считаем, сколько букв пользователь послушал
+
+  // Создаем кнопки для каждой буквы
+  question.letters.forEach((item) => {
+    const btn = document.createElement("button");
+    btn.className =
+      "h-16 text-2xl font-bold text-gray-700 bg-white border-2 border-gray-200 rounded-xl hover:border-blue-400 hover:bg-blue-50 transition-all shadow-sm";
+    btn.textContent = item.char;
+
+    btn.addEventListener("click", () => {
+      // Озвучиваем букву, делаем небольшую паузу и озвучиваем слово
+      speakSerbian(item.sound);
+      setTimeout(() => speakSerbian(item.wordSound), 800);
+
+      // Показываем пример на экране
+      wordDisplay.textContent = item.word;
+
+      // Красим кнопку, чтобы было видно, что ее уже нажимали
+      if (!btn.classList.contains("border-green-400")) {
+        btn.classList.add("border-green-400", "bg-green-50", "text-green-700");
+        clickedLetters++;
+
+        // Если прокликали все 6 букв — включаем кнопку "Дальше"
+        if (clickedLetters === question.letters.length) {
+          nextBtn.disabled = false;
+          nextBtn.classList.remove(
+            "bg-gray-300",
+            "text-gray-500",
+            "cursor-not-allowed",
+            "opacity-50",
+          );
+          nextBtn.classList.add(
+            "bg-blue-500",
+            "text-white",
+            "hover:bg-blue-600",
+            "cursor-pointer",
+            "opacity-100",
+          );
+        }
+      }
+    });
+    grid.appendChild(btn);
+  });
+
+  alphabetContainer.appendChild(grid);
+  alphabetContainer.appendChild(wordDisplay);
+  optionsDiv.appendChild(alphabetContainer);
 }
 
 function handleMatchTileClick(tile, pairs) {
@@ -407,8 +620,8 @@ function handleMatchTileClick(tile, pairs) {
   const isPair = pairs[rightWord] === leftWord;
 
   if (isPair) {
-    left.disabled = true;
-    right.disabled = true;
+    left.dataset.matched = "true";
+    right.dataset.matched = "true";
     const applySuccess = (el) => {
       el.classList.remove("hover:bg-gray-50");
       el.classList.add("bg-green-100", "border-green-500", "text-green-700");
@@ -418,7 +631,9 @@ function handleMatchTileClick(tile, pairs) {
 
     // Проверяем, все ли пары найдены
     const tiles = optionsDiv.querySelectorAll('[data-role="match-tile"]');
-    const allMatched = Array.from(tiles).every((t) => t.disabled);
+    const allMatched = Array.from(tiles).every(
+      (t) => t.dataset.matched === "true",
+    );
     if (allMatched) {
       // 1. Делаем кнопку активной
       nextBtn.disabled = false;
@@ -471,6 +686,7 @@ function createSentenceWordButton(word, answerContainer, wordsContainer) {
     "px-3 py-2 bg-white rounded-full border border-gray-200 text-gray-800 text-sm sm:text-base shadow-sm hover:bg-gray-50 active:bg-gray-100 transition select-none";
 
   btn.addEventListener("click", () => {
+    speakSerbian(btn.textContent);
     if (btn.parentElement === wordsContainer) {
       answerContainer.appendChild(btn);
     } else {
@@ -531,6 +747,7 @@ function checkSentenceAnswer(question) {
   );
 
   if (isCorrect) {
+    speakSerbian(question.correctAnswer);
     sentenceAnswerContainer.classList.add("border-green-400", "bg-green-50");
   } else {
     sentenceAnswerContainer.classList.add("border-red-400", "bg-red-50");
