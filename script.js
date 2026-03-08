@@ -5,69 +5,99 @@ const lessonsData = {
     theoryText:
       "В сербском языке есть правило: «Пиши как говоришь, читай как написано». Почти все буквы нам знакомы, но есть 6 особенных. Давай с ними познакомимся!",
     questions: [
+      // 1. Наш интерактивный алфавит
       {
         type: "alphabet",
         title: "Особые буквы",
-        subtitle: "Нажми на каждую букву, чтобы послушать её и увидеть пример.",
+        subtitle:
+          "Нажми на каждую букву, чтобы послушать её и увидеть пример. Кнопка «Дальше» появится, когда ты прослушаешь все!",
         letters: [
           {
-            char: "Ђ ђ",
-            sound: "ђе",
-            word: "Ђоковић (Джокович)",
-            wordSound: "Ђоковић",
+            char: "Ч (Č)",
+            sound: "че",
+            word: "Чаша (Стакан)",
+            wordSound: "Чаша",
           },
           {
-            char: "Ј ј",
-            sound: "је",
-            word: "Јабука (Яблоко)",
-            wordSound: "Јабука",
-          },
-          {
-            char: "Љ љ",
-            sound: "ље",
-            word: "Љубав (Любовь)",
-            wordSound: "Љубав",
-          },
-          {
-            char: "Њ њ",
-            sound: "ње",
-            word: "Његош (Негош)",
-            wordSound: "Његош",
-          },
-          {
-            char: "Ћ ћ",
+            char: "Ћ (Ć)",
             sound: "ће",
             word: "Ћао (Привет/Пока)",
             wordSound: "Ћао",
           },
           {
-            char: "Џ џ",
+            char: "Ш (Š)",
+            sound: "ше",
+            word: "Школа (Школа)",
+            wordSound: "Школа",
+          },
+          {
+            char: "Ж (Ž)",
+            sound: "же",
+            word: "Живот (Жизнь)",
+            wordSound: "Живот",
+          },
+          {
+            char: "Ђ (Đ)",
+            sound: "ђе",
+            word: "Ђоковић (Джокович)",
+            wordSound: "Ђоковић",
+          },
+          {
+            char: "Љ (Lj)",
+            sound: "ље",
+            word: "Љубав (Любовь)",
+            wordSound: "Љубав",
+          },
+          {
+            char: "Њ (Nj)",
+            sound: "ње",
+            word: "Његош (Негош)",
+            wordSound: "Његош",
+          },
+          {
+            char: "Џ (Dž)",
             sound: "џе",
             word: "Џемпер (Свитер)",
             wordSound: "Џемпер",
           },
         ],
       },
-      // Дальше идут наши привычные задания
+      // 2. Мэтчинг: Уникальная сербская кириллица
+      {
+        type: "match",
+        pairs: { Кућа: "Дом", Књига: "Книга", Људи: "Люди", Џеп: "Карман" },
+      },
+
+      // 3. Мэтчинг: Латиница (гаевица) - заставляем читать новые символы
+      {
+        type: "match",
+        pairs: { Čaj: "Чай", Škola: "Школа", Žena: "Женщина", Đus: "Сок" },
+      },
+
+      // 4. Мэтчинг: Вывески на латинице (то, что реально нужно на улице)
       {
         type: "match",
         pairs: {
-          Кафа: "Кофе",
-          Ресторан: "Ресторан",
-          Парк: "Парк",
-          Такси: "Такси",
+          Menjačnica: "Обменник",
+          Pošta: "Почта",
+          Kafić: "Кафе",
+          Ćevapi: "Чевапчичи",
         },
+      },
+
+      // 5. Закрепляем сборкой предложений (микс алфавитов)
+      {
+        type: "sentence",
+        question: "Где находится обменник?",
+        correctAnswer: "Gde je menjačnica",
+        words: ["Gde", "je", "menjačnica", "pošta"],
       },
       {
-        type: "match",
-        pairs: {
-          Центар: "Центр",
-          Апотека: "Аптека",
-          Банка: "Банк",
-          Маркет: "Магазин",
-        },
+        type: "sentence",
+        question: "Чай и сок, пожалуйста",
+        correctAnswer: "Чај и ђуc молим",
+        words: ["Чај", "и", "ђуc", "молим", "кафа"],
       },
-      // ... можешь оставить остальные мэтчинги и предложения из прошлого варианта
     ],
   },
   2: {
@@ -292,29 +322,30 @@ function cyrillicToLatin(text) {
 
 // Умная функция озвучки
 function speakSerbian(text) {
+  // 1. Останавливаем всё, что звучит сейчас
   window.speechSynthesis.cancel();
 
-  // Магия: переводим текст в латиницу перед озвучкой
+  // 2. Магия транслитерации (если текст на кириллице)
   const latinText = cyrillicToLatin(text);
   const utterance = new SpeechSynthesisUtterance(latinText);
 
-  // Принудительно просим хорватский или сербский (латинский)
+  // 3. Выбираем язык
   utterance.lang = "hr-HR";
+  utterance.rate = 0.9;
 
-  const voices = window.speechSynthesis.getVoices();
-  // Ищем балканские голоса
-  const balkanVoice = voices.find(
-    (voice) =>
-      voice.lang.includes("hr") ||
-      voice.lang.includes("sr") ||
-      voice.lang.includes("bs"),
-  );
+  // 4. Важный фикс: получаем голоса
+  let voices = window.speechSynthesis.getVoices();
 
-  if (balkanVoice) {
-    utterance.voice = balkanVoice;
+  // Если голосов нет (баг некоторых браузеров), просто пробуем произнести стандартным
+  if (voices.length > 0) {
+    const balkanVoice = voices.find(
+      (v) =>
+        v.lang.includes("hr") || v.lang.includes("sr") || v.lang.includes("bs"),
+    );
+    if (balkanVoice) utterance.voice = balkanVoice;
   }
 
-  utterance.rate = 0.9; // Чуть замедляем для учеников
+  // 5. Запуск
   window.speechSynthesis.speak(utterance);
 }
 
@@ -505,7 +536,7 @@ function renderAlphabetQuestion(question) {
 
   // ... дальше оставляй всё как было (начиная со строк про grid и wordDisplay)
   const grid = document.createElement("div");
-  grid.className = "grid grid-cols-3 gap-4 w-full max-w-sm";
+  grid.className = "grid grid-cols-2 gap-4 w-full max-w-sm";
 
   // Блок для показа примера слова (изначально пустой)
   const wordDisplay = document.createElement("div");
@@ -519,7 +550,7 @@ function renderAlphabetQuestion(question) {
   question.letters.forEach((item) => {
     const btn = document.createElement("button");
     btn.className =
-      "h-16 text-2xl font-bold text-gray-700 bg-white border-2 border-gray-200 rounded-xl hover:border-blue-400 hover:bg-blue-50 transition-all shadow-sm";
+      "h-16 text-xl font-bold text-gray-700 bg-white border-2 border-gray-200 rounded-xl hover:border-blue-400 hover:bg-blue-50 transition-all shadow-sm";
     btn.textContent = item.char;
 
     btn.addEventListener("click", () => {
@@ -537,6 +568,8 @@ function renderAlphabetQuestion(question) {
 
         // Если прокликали все 6 букв — включаем кнопку "Дальше"
         if (clickedLetters === question.letters.length) {
+          correctCount++;
+
           nextBtn.disabled = false;
           nextBtn.classList.remove(
             "bg-gray-300",
