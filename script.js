@@ -1,114 +1,157 @@
 // Данные уроков: только match и sentence
 const lessonsData = {
-  "1": [
-    {
-      // Первая группа (база)
-      type: "match",
-      pairs: {
-        Здраво: "Привет",
-        Хвала: "Спасибо",
-        Молим: "Пожалуйста",
-        Извини: "Извини"
-      }
-    },
-    {
-      // Вторая группа (существительные)
-      type: "match",
-      pairs: {
-        Пас: "Собака",
-        Мачка: "Кошка",
-        Кућа: "Дом",
-        Град: "Город"
-      }
-    },
-    {
-      // Сборка предложения
-      type: "sentence",
-      question: "Я учу сербский язык",
-      correctAnswer: "Ја учим српски језик",
-      words: ["језик", "учим", "Ја", "српски", "читам"]
-    }
-  ],
-  "2": [
-    {
-      // Первая группа (еда)
-      type: "match",
-      pairs: {
-        Ајвар: "Айвар",
-        Хлеб: "Хлеб",
-        Млеко: "Молоко",
-        Сир: "Сыр"
-      }
-    },
-    {
-      // Вторая группа (еда — категории)
-      type: "match",
-      pairs: {
-        Поврће: "Овощи",
-        Воће: "Фрукты",
-        Месо: "Мясо",
-        Вода: "Вода"
-      }
-    },
-    {
-      type: "sentence",
-      question: "Я люблю есть айвар",
-      correctAnswer: "Ја волим да једем ајвар",
-      words: ["Ја", "волим", "да", "једем", "ајвар", "пијем"]
-    },
-    {
-      type: "sentence",
-      question: "Это очень полезно",
-      correctAnswer: "Ово је веома здраво",
-      words: ["Ово", "је", "веома", "здраво", "лоше"]
-    },
-    {
-      type: "sentence",
-      question: "Сколько здесь калорий?",
-      correctAnswer: "Колико калорија има ово",
-      words: ["Колико", "калорија", "има", "ово", "кошта"]
-    }
-  ],
-  "3": [
-    {
-      // Город и инфраструктура — объекты
-      type: "match",
-      pairs: {
-        Улица: "Улица",
-        "Пешачки прелаз": "Переход",
-        Знак: "Знак",
-        Семафор: "Светофор"
-      }
-    },
-    {
-      // Город и инфраструктура — дополнения
-      type: "match",
-      pairs: {
-        Пут: "Дорога",
-        Рупа: "Яма",
-        Аутобус: "Автобус",
-        Мост: "Мост"
-      }
-    },
-    {
-      type: "sentence",
-      question: "Где находится пешеходный переход?",
-      correctAnswer: "Где се налази пешачки прелаз",
-      words: ["Где", "се", "налази", "пешачки", "прелаз", "мост"]
-    },
-    {
-      type: "sentence",
-      question: "На дороге большая яма",
-      correctAnswer: "На путу је велика рупа",
-      words: ["На", "путу", "је", "велика", "рупа", "зграда"]
-    },
-    {
-      type: "sentence",
-      question: "Здесь нет знака",
-      correctAnswer: "Овде нема знака",
-      words: ["Овде", "нема", "знака", "има"]
-    }
-  ]
+  1: {
+    theoryTitle: "Урок 1: Вывески и слова",
+    theoryText:
+      "В сербском языке используется и кириллица, и латиница. Главное правило: как пишется, так и читается! Попробуй угадать эти слова, они очень похожи на русские.",
+    questions: [
+      {
+        type: "match",
+        pairs: {
+          Кафа: "Кофе",
+          Ресторан: "Ресторан",
+          Парк: "Парк",
+          Такси: "Такси",
+        },
+      },
+      {
+        type: "match",
+        pairs: {
+          Центар: "Центр",
+          Апотека: "Аптека",
+          Банка: "Банк",
+          Маркет: "Магазин",
+        },
+      },
+      {
+        type: "match",
+        pairs: {
+          Тоалет: "Туалет",
+          Аутобус: "Автобус",
+          Пица: "Пицца",
+          Музеј: "Музей",
+        },
+      },
+      {
+        type: "sentence",
+        question: "Такси, пожалуйста",
+        correctAnswer: "Такси молим",
+        words: ["Такси", "молим", "кафа"],
+      },
+      {
+        type: "sentence",
+        question: "Аптека и банк",
+        correctAnswer: "Апотека и банка",
+        words: ["Апотека", "и", "банка", "пица"],
+      },
+    ],
+  },
+  2: {
+    theoryTitle: "Урок 2: Базовая вежливость",
+    theoryText:
+      "Разница между универсальным «Здраво» (Привет) и более вежливым «Добар дан» (Добрый день). Не забывай всегда говорить «хвала» (спасибо) и «молим» (пожалуйста).",
+    questions: [
+      {
+        type: "match",
+        pairs: {
+          Здраво: "Привет",
+          "Добар дан": "Добрый день",
+          "Добро јутро": "Доброе утро",
+          "Добро вече": "Добрый вечер",
+        },
+      },
+      {
+        type: "match",
+        pairs: {
+          Хвала: "Спасибо",
+          Молим: "Пожалуйста",
+          Извини: "Извини",
+          Довиђења: "До свидания",
+        },
+      },
+      {
+        type: "match",
+        pairs: { Да: "Да", Не: "Нет", Добро: "Хорошо", Лоше: "Плохо" },
+      },
+      {
+        type: "sentence",
+        question: "Добрый день, извините",
+        correctAnswer: "Добар дан извини",
+        words: ["Добар", "дан", "извини", "хвала"],
+      },
+      {
+        type: "sentence",
+        question: "Спасибо, до свидания",
+        correctAnswer: "Хвала довиђења",
+        words: ["Хвала", "довиђења", "здраво"],
+      },
+      {
+        type: "sentence",
+        question: "Да, спасибо",
+        correctAnswer: "Да хвала",
+        words: ["Да", "хвала", "не"],
+      },
+      {
+        type: "sentence",
+        question: "Нет, извини",
+        correctAnswer: "Не извини",
+        words: ["Не", "извини", "да"],
+      },
+    ],
+  },
+  3: {
+    theoryTitle: "Урок 3: Вопросы и выживание",
+    theoryText:
+      "Вопросительные слова — ключ к общению. Также здесь мы учимся говорить, что мы чего-то не понимаем или не знаем. Пока запоминай это просто как готовые фразы-выручалочки!",
+    questions: [
+      {
+        type: "match",
+        pairs: { Шта: "Что", Ко: "Кто", Где: "Где", Како: "Как" },
+      },
+      {
+        type: "match",
+        pairs: {
+          Разумем: "Понимаю",
+          "Не разумем": "Не понимаю",
+          Знам: "Знаю",
+          "Не знам": "Не знаю",
+        },
+      },
+      {
+        type: "match",
+        pairs: {
+          Српски: "Сербский",
+          Руски: "Русский",
+          Енглески: "Английский",
+          Језик: "Язык",
+        },
+      },
+      {
+        type: "sentence",
+        question: "Я не понимаю",
+        correctAnswer: "Ја не разумем",
+        words: ["Ја", "не", "разумем", "шта"],
+      },
+      {
+        type: "sentence",
+        question: "Я не знаю",
+        correctAnswer: "Ја не знам",
+        words: ["Ја", "не", "знам", "ко"],
+      },
+      {
+        type: "sentence",
+        question: "Сербский язык",
+        correctAnswer: "Српски језик",
+        words: ["Српски", "језик", "руски"],
+      },
+      {
+        type: "sentence",
+        question: "Говорю по-русски",
+        correctAnswer: "Говорим руски",
+        words: ["Говорим", "руски", "енглески"],
+      },
+    ],
+  },
 };
 
 // Определяем текущий урок по параметру ?level= в URL
@@ -116,7 +159,8 @@ const urlParams = new URLSearchParams(window.location.search);
 const currentLessonId = urlParams.get("level") || "1";
 
 // Делаем копию массива вопросов, чтобы push не трогал оригинальные данные урока
-let questions = [...(lessonsData[currentLessonId] || lessonsData["1"])];
+let lessonData = lessonsData[currentLessonId] || lessonsData["1"];
+let questions = [...lessonData.questions];
 
 // Служебные переменные для текущего прохождения
 let currentQuestionIndex = 0;
@@ -140,6 +184,17 @@ const congratsDiv = document.getElementById("congrats");
 const restartBtn = document.getElementById("restartBtn");
 const backToMapBtn = document.getElementById("backToMapBtn");
 const closeLessonBtn = document.getElementById("close-lesson");
+
+// Элементы теории
+const theoryStartScreen = document.getElementById("theory-start-screen");
+const theoryStartTitle = document.getElementById("theory-start-title");
+const theoryStartText = document.getElementById("theory-start-text");
+const startLessonBtn = document.getElementById("start-lesson-btn");
+
+const theoryHintBtn = document.getElementById("theory-hint-btn");
+const theoryModal = document.getElementById("theory-modal");
+const theoryModalText = document.getElementById("theory-modal-text");
+const closeModalBtn = document.getElementById("close-modal-btn");
 
 function setNextButtonDisabled(label) {
   nextBtn.disabled = true;
@@ -212,8 +267,7 @@ function renderSentenceQuestion(question) {
 
   // Контейнер со словами
   const wordsContainer = document.createElement("div");
-  wordsContainer.className =
-    "flex flex-wrap gap-2 w-full justify-center";
+  wordsContainer.className = "flex flex-wrap gap-2 w-full justify-center";
 
   // Создаём копию массива, чтобы не испортить оригинал, и перемешиваем её
   const shuffledWords = [...question.words];
@@ -221,8 +275,8 @@ function renderSentenceQuestion(question) {
 
   // Теперь создаём кнопки, используя перемешанный список
   shuffledWords.forEach((word) => {
-     const btn = createSentenceWordButton(word, answerContainer, wordsContainer);
-     wordsContainer.appendChild(btn);
+    const btn = createSentenceWordButton(word, answerContainer, wordsContainer);
+    wordsContainer.appendChild(btn);
   });
 
   optionsDiv.appendChild(answerContainer);
@@ -357,11 +411,7 @@ function handleMatchTileClick(tile, pairs) {
     right.disabled = true;
     const applySuccess = (el) => {
       el.classList.remove("hover:bg-gray-50");
-      el.classList.add(
-        "bg-green-100",
-        "border-green-500",
-        "text-green-700"
-      );
+      el.classList.add("bg-green-100", "border-green-500", "text-green-700");
     };
     applySuccess(left);
     applySuccess(right);
@@ -372,16 +422,27 @@ function handleMatchTileClick(tile, pairs) {
     if (allMatched) {
       // 1. Делаем кнопку активной
       nextBtn.disabled = false;
-      
+
       // 2. Убираем серые "сонные" цвета
-      nextBtn.classList.remove('bg-gray-300', 'text-gray-500', 'cursor-not-allowed', 'opacity-50');
-      
+      nextBtn.classList.remove(
+        "bg-gray-300",
+        "text-gray-500",
+        "cursor-not-allowed",
+        "opacity-50",
+      );
+
       // 3. Добавляем яркие "боевые" цвета
-      nextBtn.classList.add('bg-blue-500', 'text-white', 'hover:bg-blue-600', 'cursor-pointer', 'opacity-100');
-      
+      nextBtn.classList.add(
+        "bg-blue-500",
+        "text-white",
+        "hover:bg-blue-600",
+        "cursor-pointer",
+        "opacity-100",
+      );
+
       // 4. Меняем текст (на всякий случай)
       nextBtn.textContent = "Дальше";
-  }
+    }
   } else {
     hasMatchError = true;
 
@@ -428,7 +489,7 @@ function updateSentenceUI() {
   const hasWords = wordButtons.length > 0;
 
   const placeholder = sentenceAnswerContainer.querySelector(
-    '[data-role="sentence-placeholder"]'
+    '[data-role="sentence-placeholder"]',
   );
   if (placeholder) {
     if (hasWords) {
@@ -452,7 +513,7 @@ function checkSentenceAnswer(question) {
   if (!sentenceAnswerContainer) return;
 
   const userAnswer = Array.from(
-    sentenceAnswerContainer.querySelectorAll("button")
+    sentenceAnswerContainer.querySelectorAll("button"),
   )
     .map((b) => b.textContent.trim())
     .join(" ");
@@ -466,14 +527,11 @@ function checkSentenceAnswer(question) {
     "border-red-400",
     "bg-red-50",
     "border-green-400",
-    "bg-green-50"
+    "bg-green-50",
   );
 
   if (isCorrect) {
-    sentenceAnswerContainer.classList.add(
-      "border-green-400",
-      "bg-green-50"
-    );
+    sentenceAnswerContainer.classList.add("border-green-400", "bg-green-50");
   } else {
     sentenceAnswerContainer.classList.add("border-red-400", "bg-red-50");
   }
@@ -530,12 +588,7 @@ nextBtn.addEventListener("click", function () {
   if (correctCount === targetCount) {
     updateProgress();
 
-    if (currentLessonId === "1") {
-      localStorage.setItem("lesson1_completed", "true");
-    }
-    if (currentLessonId === "2") {
-      localStorage.setItem("lesson2_completed", "true");
-    }
+    localStorage.setItem(`lesson${currentLessonId}_completed`, "true");
 
     lessonContainer.classList.add("hidden");
     congratsDiv.classList.remove("hidden");
@@ -557,7 +610,7 @@ if (backToMapBtn) {
 if (closeLessonBtn) {
   closeLessonBtn.addEventListener("click", () => {
     const isConfirmed = confirm(
-      "Вы уверены, что хотите прервать урок? Ваш прогресс не сохранится."
+      "Вы уверены, что хотите прервать урок? Ваш прогресс не сохранится.",
     );
     if (isConfirmed) {
       window.location.href = "index.html";
@@ -565,5 +618,42 @@ if (closeLessonBtn) {
   });
 }
 
-// Начальное отображение
-showQuestion();
+// === ЛОГИКА ЭКРАНА ТЕОРИИ И ШПАРГАЛКИ ===
+
+// Заполняем тексты теории из нашей базы
+theoryStartTitle.textContent = lessonData.theoryTitle;
+theoryStartText.textContent = lessonData.theoryText;
+theoryModalText.textContent = lessonData.theoryText;
+
+// Клик по кнопке "Начать тренировку"
+if (startLessonBtn) {
+  startLessonBtn.addEventListener("click", () => {
+    // Прячем стартовый экран
+    theoryStartScreen.classList.add("hidden");
+    // Запускаем первый вопрос!
+    showQuestion();
+  });
+}
+
+// Клик по лампочке (показать шпаргалку)
+if (theoryHintBtn) {
+  theoryHintBtn.addEventListener("click", () => {
+    theoryModal.classList.remove("hidden");
+  });
+}
+
+// Клик по крестику в шпаргалке (закрыть шпаргалку)
+if (closeModalBtn) {
+  closeModalBtn.addEventListener("click", () => {
+    theoryModal.classList.add("hidden");
+  });
+}
+
+// Закрытие шпаргалки при клике мимо белого окошка (по темному фону)
+if (theoryModal) {
+  theoryModal.addEventListener("click", (e) => {
+    if (e.target === theoryModal) {
+      theoryModal.classList.add("hidden");
+    }
+  });
+}

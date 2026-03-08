@@ -21,8 +21,8 @@
       id="lesson-container"
       class="w-full max-w-md mx-auto p-6 rounded-2xl bg-white shadow-xl flex flex-col items-center"
     >
-      <!-- Кнопка закрытия -->
-      <div class="w-full mb-2 flex items-center justify-start">
+      <!-- Кнопка закрытия и теории -->
+      <div class="w-full mb-2 flex items-center justify-between">
         <button
           id="close-lesson"
           type="button"
@@ -30,6 +30,9 @@
           aria-label="Закрыть урок"
         >
           ✕
+        </button>
+        <button id="theory-hint-btn" class="text-2xl ml-4 hover:scale-110 transition-transform">
+          💡
         </button>
       </div>
 
@@ -94,6 +97,24 @@
       >
         Пройти ещё раз
       </button>
+    </div>
+    <div id="theory-start-screen" class="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center p-6 text-center">
+        <div class="text-6xl mb-6">🎓</div>
+        <h1 id="theory-start-title" class="text-3xl font-extrabold text-gray-800 mb-4">Название урока</h1>
+        <p id="theory-start-text" class="text-lg text-gray-600 mb-10 max-w-md leading-relaxed">Текст теории...</p>
+        <button id="start-lesson-btn" class="bg-blue-500 text-white font-bold py-4 px-10 rounded-2xl shadow-[0_4px_0_rgb(37,99,235)] hover:bg-blue-600 hover:translate-y-1 hover:shadow-none transition-all text-xl">
+            Начать тренировку
+        </button>
+    </div>
+
+    <div id="theory-modal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl p-6 max-w-sm w-full shadow-2xl relative">
+            <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl font-bold p-2">✕</button>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                💡 Шпаргалка
+            </h2>
+            <p id="theory-modal-text" class="text-gray-600 text-lg leading-relaxed">Текст теории...</p>
+        </div>
     </div>
 
     <script src="script.js"></script>
